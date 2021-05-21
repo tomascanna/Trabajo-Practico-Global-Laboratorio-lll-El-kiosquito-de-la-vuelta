@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <?php include('php/meta.php');?> 
+    <?php require('php/meta.php');?> 
     <title>El kiosquito de la vuelta || Home</title>
 </head>
 <body>
@@ -9,7 +9,7 @@
         <header>
         
             <?php
-                require('php/cabeceraYNavegacion.php');
+               include('php/cabeceraYNavegacion.php');
             ?>
             
         </header>
@@ -27,12 +27,12 @@
             </section>
             
             <!--Seccion de los Articulos en Oferta-->
-            <section class="articulos"><!--Se pueden tener el mismo id en distintos html?-->
+            <section class="articulos">
                 <div class="container">
                     <div class="row row-cols-1 row-cols-md-3 g-4">
                         <?php
                             for($i=0;$i<3;$i++){
-                                require('php/productosCuadrados.php');
+                                include('php/producto.php');
                             }
                         ?>
                     </div>
@@ -40,7 +40,7 @@
                     <div class="row row-cols-1 row-cols-md-3 g-4">
                         <?php
                             for($i=0;$i<3;$i++){
-                                require('php/productosCuadrados.php');
+                                include('php/producto.php');
                             }
                         ?>
                     </div>
@@ -56,7 +56,7 @@
         
         <footer>
             <?php
-                require('php/footer.php');
+                include('php/footer.php');
             ?>    
         </footer>
     </div>

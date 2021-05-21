@@ -8,7 +8,7 @@ body{font-family: 'Antonio', sans-serif;}
 
 #logoYNombre a,#lblLogin,#lblCarrito,.redesSociales a,.filtroProductos a{text-decoration: none;color:black;}
 
-.loginYCarrito{text-align: end; background-color: #e5e7e9; padding:.5% 0%;}
+.loginYCarrito{text-align: end; background-color: #e5e7e9; padding:.5% 0%;box-shadow:2px 2px 5px #999;}
 .loginYCarrito a{margin:2% 3%; }
 
 #lblLogin img,#lblCarrito img{width: 20px}
@@ -61,28 +61,44 @@ main{
     padding: 3% 0%;
 }
 
-.productoCuadrado .productoRectangular h5{
+.producto h5{
     padding-top:3%;
     font-weight: 600;
     font-size: 23px;
 }
 
-.productoCuadrado .productoRectangular p{padding-top: 3%;font-size: 20px;}
+.producto p{padding-top: 3%;font-size: 20px;}
 
-.articulos .productoCuadrado{margin-bottom: 3%;}
+.articulos .producto{margin-bottom: 3%;}
+
+.filtroYProductos .producto{margin-bottom: 10%;}
 
 .card{box-shadow:2px 2px 5px #999;}
 
-.productoCuadrado img{border-bottom: 2px solid #dee2e6}
+.producto img{border-bottom: 2px solid #dee2e6}
 
-.productoRectangular{text-align: start; margin:0% 3%;}
-.productoRectangular  .card-body{border-left: 2px solid #dee2e6}
-.productoRectangular img{max-width:148px}
-.filtroProductos{margin-bottom: -2%;margin-left: 3%;margin-right: -2%;}
-.filtroProductos p{text-align: center;}
+.producto .card-body{text-align: center;}
+
+.filtroProductos{
+    margin: 1% 1.5%; 
+    text-align: center;
+}
+
+.filtroProductos p{font-size: 20px;font-weight: bold;}
+
+.filtroProductos .list-group{font-weight: initial;}
 
 .articulos .row{text-align: center;margin:0% 3%;}
 /*--------------------------------------------------------------*/
+
+
+
+.mapa{text-align: center;}
+.mapa iframe{box-shadow:2px 2px 5px #999;}
+.quienesSomos .reseña{
+    text-align: center;
+    font-weight: 700;
+}
 
 footer{margin-top: 3%;text-align: center;}
 .redesSociales img{width:45px;margin-right:1%;}

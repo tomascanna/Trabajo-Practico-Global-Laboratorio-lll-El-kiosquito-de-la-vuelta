@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <?php include('php/meta.php');?> 
+  <?php require('php/meta.php');?> 
   <title>El kiosquito de la vuelta || Productos</title>
 </head>
 
@@ -25,9 +25,9 @@
                 </div>
             </section>
 
-            <section id="filtroYProductos">
+            <section class="filtroYProductos">
                 <div class="container">
-                  <div class="row">
+                  <div class="row justify-content-center">
                       <div class="col filtroProductos">
                         <p>Filtro de busqueda</p>  
                         <ul class="list-group">
@@ -37,14 +37,15 @@
                             <li class="list-group-item"><a href="#">Golosinas</a></li>
                             <li class="list-group-item"><a href="#">Gaseosas</a></li>
                         </ul>
+
                       </div>
     
                       <div class="col-10">
                         <div class="container">
-                            <div class="row row row-cols-2 justify-content-start">
+                            <div class="row">
                                 <?php
-                                  for($i=0;$i<4;$i++){
-                                    include('php/productosRectangulos.php');
+                                  for($i=0;$i<6;$i++){
+                                    include('php/producto.php');
                                   }
                                 ?>
                             </div>        
@@ -66,15 +67,3 @@
     </div>
 </body>
 </html>
-
-<!--
-
-                            <ul class="list-group">
-                                <li class="list-group-item">Aseo del hogar</li>
-                                <li class="list-group-item">Azúcar,endulzantes y mermeladas</li>
-                                <li class="list-group-item">Cervezas</li>
-                                <li class="list-group-item">Golosinas</li>
-                                <li class="list-group-item">Gaseosas</li>
-                            </ul>
-
--->
