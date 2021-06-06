@@ -1,3 +1,4 @@
+/*--------------------------SECCION GENERALIZADA-----------------------------*/
 body{font-family: 'Antonio', sans-serif;}
 
 .btn{
@@ -6,31 +7,35 @@ body{font-family: 'Antonio', sans-serif;}
     color:black;
 }
 
-#logoYNombre a,#lblLogin,#lblCarrito,.redesSociales a,.filtroProductos a{text-decoration: none;color:black;}
+.logoYNombre a,.lblLogin,.lblCarrito,.lblCerrarSesion,.redesSociales a,.filtroProductos a{text-decoration: none;color:black;}
 
-.loginYCarrito{text-align: end; background-color: #e5e7e9; padding:.5% 0%;box-shadow:2px 2px 5px #999;}
-.loginYCarrito a{margin:2% 3%; }
+.barraSuperior{text-align: end; background-color: #e5e7e9; padding:.5% 0%;box-shadow:2px 2px 5px #999;}
+.barraSuperior a{margin:2% 3%; }
 
-#lblLogin img,#lblCarrito img{width: 20px}
+.lblLogin img,.lblCarrito img,.lblCerrarSesion img{width: 20px}
+/*-------------------------FIN SECCION GENERALIZADA--------------------------*/
 
-
+/*---------------------------------CABECERA---------------------------------*/
 .logoYBuscador{margin-top: 2%;}
 
-#logoYNombre img{
+.logoYNombre img{
     width: 160px;
 }
 
-#logoYNombre{
+.logoYNombre{
     text-align: center;
     font-size: 30px;
     font-weight: 700;
 }
 
-#buscador{
+.buscador{
     margin-top: 2%;
-    margin-left: 22%;
+    margin-left: 18%;
 }
+/*-----------------------------FIN CABECERA-----------------------------*/
 
+
+/*-------------------------MENU NAV-------------------------*/
 nav{
     text-align: center;
     font-weight: bold;
@@ -48,8 +53,9 @@ nav li {
 }
 
 .nav-link{color: black; padding-left:150px; padding-right: 150px;}
+/*-------------------------FIN MENU NAV-------------------------*/
 
-/*---------------------PRODUCTOS-----------------------------*/
+/*-------------------------SECCION PRINCIPAL DE LA PAGINA-------------------------*/
 main{
     box-shadow:2px 2px 5px #999;
     background-color:  #e5e7e9 ;
@@ -60,6 +66,9 @@ main{
     text-align: center;
     padding: 3% 0%;
 }
+/*-------------------------FIN SECCION PRINCIPAL DE LA PAGINA-------------------------*/
+
+/*----------------------------------TARJETA PRODUCTO----------------------------------*/
 
 .producto h5{
     padding-top:3%;
@@ -67,41 +76,111 @@ main{
     font-size: 23px;
 }
 
-.producto p{padding-top: 3%;font-size: 20px;}
-
-.articulos .producto{margin-bottom: 3%;}
-
-.filtroYProductos .producto{margin-bottom: 10%;}
-
-.card{box-shadow:2px 2px 5px #999;}
-
-.producto img{border-bottom: 2px solid #dee2e6}
-
-.producto .card-body{text-align: center;}
-
-.filtroProductos{
-    margin: 1% 1.5%; 
-    text-align: center;
+.producto p{
+    padding-top: 3%;
+    font-size: 18px;
 }
 
-.filtroProductos p{font-size: 20px;font-weight: bold;}
+.card{
+    box-shadow:2px 2px 5px #999;
+}
 
-.filtroProductos .list-group{font-weight: initial;}
+.producto img{
+    max-width: 1475%;
+    max-height: 1475%;
+    border-bottom: 2px solid #dee2e6
+}
 
-.articulos .row{text-align: center;margin:0% 3%;}
-/*--------------------------------------------------------------*/
+.producto .card-body{
+    text-align: center;
+}
+/*--------------------------------FIN TARJETA PRODUCTO--------------------------------*/
 
+/*----------------------PAGINA PRINCIPAL || ARTICULOS EN OFERTA----------------------*/
+.articulosEnOferta{
+    margin-left:5%;
+}
 
+.articulosEnOferta .row{
+    margin-bottom: 5%;
+}
+/*--------------------FIN PAGINA PRINCIPAL || ARTICULOS EN OFERTA--------------------*/
 
+/*----------------------PAGINA PRODUCTOS || SECCION PRODUCTOS----------------------*/
+.seccionProductos{
+    margin-left: 8%;
+}
+
+.seccionProductos .producto{
+    margin-bottom:16%
+}
+/*-------------------FIN PAGINA PRODUCTOS || SECCION PRODUCTOS-------------------*/
+
+/*----------------------PAGINA PRODUCTOS || FILTRO BUSQUEDA---------------------*/
+.seccionProductos .filtroBusqueda{
+    margin-left: -4.1%;
+    margin-bottom: 8%;
+}
+
+.seccionProductos .filtroBusqueda ul{
+    margin-bottom: 8%;
+}
+
+.seccionProductos .filtroBusqueda .accordion-button:not(.collapsed) {
+	color: black;
+	background-color: transparent;
+	box-shadow: inset 0 -1px 0 rgba(0,0,0,.125);
+}
+
+.seccionProductos .filtroBusqueda .list-group-item.active {
+    text-align: center;
+    color:black;
+	background-color: #cbcbcc;
+	border-color: #e5e7e9;
+}
+
+.accordion-button:focus {
+	border-color: transparent;
+    box-shadow:none;
+}
+/*--------------------FIN PAGINA PRODUCTOS || FILTRO BUSQUEDA-------------------*/
+
+/*--------------------------------QUIENES SOMOS--------------------------------*/
 .mapa{text-align: center;}
 .mapa iframe{box-shadow:2px 2px 5px #999;}
 .quienesSomos .reseña{
-    text-align: center;
-    font-weight: 700;
+    text-align:justify;
+    font-weight: 500;
 }
+.quienesSomos .reseña .col-8{
+    margin-left:18%;
+}
+/*------------------------------FIN QUIENES SOMOS-----------------------------*/
 
+
+/*-----------------------------------FOOTER-----------------------------------*/
 footer{margin-top: 3%;text-align: center;}
 .redesSociales img{width:45px;margin-right:1%;}
-.redesSociales a{font-size: 20px;margin:1% 3%;}
-.redesSociales #contactoFacebook{margin-left: 0%;}
+.redesSociales a{font-size: 20px}
 .redesSociales p{font-size:30px;}
+/*--------------------------------FIN FOOTER--------------------------------*/
+
+/*----------------------------------ADMIN----------------------------------*/
+
+/*-------------Login------------*/
+    .loginAdministrador{
+        margin-left: 39%;
+        margin-right: 39%;
+    }
+/*-------------Fin login-------*/
+
+/*-------------Panel principal---------------*/
+.administrador nav{margin: 2% 0%}
+.administrador .lblCerrarSesion{text-align: right;}
+
+.administrador .tablaProductos .row{margin:0% 16%}
+/*------------Fin Panel Principal------------*/
+
+
+
+/*------------------------------------------------------------------------*/
