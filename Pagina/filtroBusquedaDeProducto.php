@@ -7,22 +7,7 @@
         </h2>
         <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
-                <form action="filtrarBusqueda.php" method="get" onSubmit="return validarFiltro()">
-                    <ul class="list-group">
-                        <li class="list-group-item active" aria-current="true">Marca</li>
-                            <?php
-                                $resultadoconsulta= BaseDeDatos::generarConsulta("SELECT  DISTINCT marca FROM productos where marca like '%".$busqueda."%' or categoria like '%".$busqueda."%' or nombre like '%".$busqueda."%'");
-                                while($row=mysqli_fetch_array($resultadoconsulta)):
-                                    ?>
-                                    <li class="list-group-item">
-                                        <input type="checkbox" name="chkMarca[]" id="chkMarca" value="<?=$row['marca'];?>">
-                                        <label for="<?=$row['marca']?>"><?=$row['marca'];?></label>
-                                    </li>
-                                    <?php
-                                endwhile;
-                            ?>
-                    </ul>
-                            
+               <form id="frmFiltroDeBusqueda" action="mostrarFiltradoProducto.php" method="get" onSubmit="return validarFiltro()">                            
                     <ul class="list-group">
                         <li class="list-group-item active" aria-current="true">Categorias</li>
                                
@@ -31,7 +16,7 @@
                             while($row=mysqli_fetch_array($resultadoconsulta)):
                                 ?>
                                 <li class="list-group-item">
-                                    <input type="checkbox" name="chkCategoria[]" value="<?=$row['categoria'];?>">
+                                    <input id="chk<?=$row['categoria'];?>" class="chkCategoria" type="checkbox" name="chkCategoria[]" value="<?=$row['categoria'];?>">
                                     <label for="<?=$row['categoria'];?>"><?=$row['categoria'];?><label>
                                 </li>
                                 <?php
@@ -42,13 +27,13 @@
                     <ul class="list-group">
                         <li class="list-group-item active" aria-current="true">Precio</li>
                         <li class="list-group-item">
-                            <label for="">Desde</label>
-                            <input type="range" class="form-range" min="1" max="5600" id="rangoDesde">
+                            <label id="lblrangoDesde" for="rangoDesde">Desde</label>
+                            <input type="range" class="form-range" min="0" max="5600" id="rangoDesde" name="rangoDesde" oninput="cambiarValorDesde()" value="0">
                         </li>
                            
                         <li class="list-group-item">
-                            <label for="">Hasta</label>
-                            <input type="range" class="form-range" min="1" max="5600" id="rangoHasta">
+                            <label id="lblrangoHasta" for="rangoDesde">Hasta</label>
+                            <input type="range" class="form-range" min="0" max="5600" id="rangoHasta" name="rangoHasta" oninput="cambiarValorHasta()" value="0">
                         </li>
                     </ul>
                         

@@ -7,12 +7,12 @@ body{font-family: 'Antonio', sans-serif;}
     color:black;
 }
 
-.logoYNombre a,.lblLogin,.lblCarrito,.lblCerrarSesion,.redesSociales a,.filtroProductos a{text-decoration: none;color:black;}
+.logoYNombre a,.lblCarrito,.lblCerrarSesion,.redesSociales a,.filtroProductos a{text-decoration: none;color:black;}
 
 .barraSuperior{text-align: end; background-color: #e5e7e9; padding:.5% 0%;box-shadow:2px 2px 5px #999;}
 .barraSuperior a{margin:2% 3%; }
 
-.lblLogin img,.lblCarrito img,.lblCerrarSesion img{width: 20px}
+.lblCarrito img,.lblCerrarSesion img{width: 20px}
 /*-------------------------FIN SECCION GENERALIZADA--------------------------*/
 
 /*---------------------------------CABECERA---------------------------------*/
@@ -101,9 +101,14 @@ main{
     margin-left:5%;
 }
 
-.articulosEnOferta .row{
-    margin-bottom: 5%;
+.articulosEnOferta .producto .card{
+    width: 85%; 
+    min-height:103%
 }
+
+.articulosEnOferta .producto{margin-bottom: 3%;}
+
+
 /*--------------------FIN PAGINA PRINCIPAL || ARTICULOS EN OFERTA--------------------*/
 
 /*----------------------PAGINA PRODUCTOS || SECCION PRODUCTOS----------------------*/
@@ -111,8 +116,10 @@ main{
     margin-left: 8%;
 }
 
-.seccionProductos .producto{
-    margin-bottom:16%
+.seccionProductos .producto .card{
+    margin-bottom:16%;
+    width: 85%; 
+    min-height:90%;
 }
 /*-------------------FIN PAGINA PRODUCTOS || SECCION PRODUCTOS-------------------*/
 
@@ -179,8 +186,21 @@ footer{margin-top: 3%;text-align: center;}
 .administrador .lblCerrarSesion{text-align: right;}
 
 .administrador .tablaProductos .row{margin:0% 16%}
+
+.administrador table a{margin: 1% 3%;}
 /*------------Fin Panel Principal------------*/
 
+/*----------------------Formularios-------------------------*/
+.administrador .lblSeccionAdmin{margin-left: 1%;}
+.administrador .frmAdministrador{margin:0% 25%}
+.administrador .frmAdministrador input[type="text"],
+.administrador .frmAdministrador input[type="number"],
+.administrador .frmAdministrador input[type="file"],
+.administrador .frmAdministrador input[type="submit"],
+.administrador .frmAdministrador label{margin-left:25%;}
 
+.administrador .frmAdministrador label[for="rbtSI"],
+.administrador .frmAdministrador label[for="rbtNo"]{margin:0%}
+/*----------------------Fin Formularios-------------------------*/
 
 /*------------------------------------------------------------------------*/

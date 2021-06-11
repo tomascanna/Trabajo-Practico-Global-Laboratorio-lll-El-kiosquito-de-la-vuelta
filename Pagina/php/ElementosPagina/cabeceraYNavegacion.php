@@ -2,7 +2,6 @@
     <div class="container">
         <div class="barraSuperior row justify-content-end">
             <div class="col-xs-1 col-lg-4">
-                <a class="lblLogin" href="#" ><img src="icons/person-outline.svg">Iniciar Sesion</a>
                 <a class="lblCarrito" href="#" ><img src="icons/bag.svg">Carrito</a>
             </div>
         </div>
@@ -12,10 +11,10 @@
                 <a href="index.php"><img src="img/logo/unnamed.png" alt="logo">El kiosquito de la vuelta</a>
             </div>
 
-              <form action="buscarProducto.php" onsubmit="return validarBuscador()" method="get" class="buscador">
+              <form action="mostrarResultadoBusqueda.php" onsubmit="return validarBuscador()" method="get" class="buscador">
                 <div class="row row-cols-2">
                     <div class="col"><input id="buscadorPrincipal" name="buscadorPrincipal" class="form-control me-2" type="search" placeholder="Ingrese el producto que desee buscar..." aria-label="Search"></div>
-                    <div class="col"><input type="submit" value="Buscar" class="btn btn-primary"></div>
+                    <div class="col"><input type="submit" value="Buscar" class="btn btn-dark"></div>
                 </div>
               </form>
         </div>

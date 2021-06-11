@@ -1,3 +1,4 @@
+
 <?php
     require('php/BD.php');
     require('php/ElementosPagina/producto.php');

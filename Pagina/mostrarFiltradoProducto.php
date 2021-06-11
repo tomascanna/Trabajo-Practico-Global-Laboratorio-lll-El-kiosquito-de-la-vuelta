@@ -1,11 +1,11 @@
 <?php
+    
     require('php/BD.php');
     require('php/ElementosPagina/producto.php');
 
     $resultadochkCategoria = $_GET['chkCategoria'];
     $resultadoRangoHasta = $_GET['rangoHasta'];
     $resultadoRangoDesde = $_GET['rangoDesde'];
-
     if(!$resultadochkCategoria){header("Location:productos.php");}
 ?>
 <!DOCTYPE html>
@@ -82,4 +82,19 @@
     </div>
 </body>
 </html>
+
 <script src="js/script.js"></script>
+
+<script>/*Establecer los resultados del filtrado*/
+  var array = <?=json_encode($resultadochkCategoria);?>
+
+  for(var i=0;i<array.length;i++){
+  document.getElementById("chk"+array[i]).checked=true;
+  }
+
+  document.getElementById("rangoDesde").value=<?=$resultadoRangoDesde?>;
+  document.getElementById("lblrangoDesde").innerHTML ="Desde: $<?=$resultadoRangoDesde?>";
+
+  document.getElementById("rangoHasta").value=<?=$resultadoRangoHasta?>;
+  document.getElementById("lblrangoHasta").innerHTML ="Hasta: $<?=$resultadoRangoHasta?>";
+</script>

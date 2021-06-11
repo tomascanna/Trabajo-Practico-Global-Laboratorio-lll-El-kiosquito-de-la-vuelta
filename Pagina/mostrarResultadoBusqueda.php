@@ -36,7 +36,7 @@
             <div class="row">
               <div class="col-xs col-sm- col-md-3 filtroBusqueda">
                 <?php
-                  include('php/filtroBusquedaDeProducto.php');
+                  include('filtroBusquedaDeProducto.php');
                 ?>
               </div>
 

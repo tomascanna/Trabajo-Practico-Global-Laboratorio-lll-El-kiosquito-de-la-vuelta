@@ -7,22 +7,7 @@
         </h2>
         <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
-               <form id="frmFiltroDeBusqueda" action="filtrarBusqueda.php" method="get" onSubmit="return validarFiltro()">
-                    <!--<ul class="list-group">
-                        <li class="list-group-item active" aria-current="true">Marca</li>
-                            <?php
-                                /*$resultadoconsulta= BaseDeDatos::generarConsulta("SELECT  DISTINCT marca FROM productos");
-                                while($row=mysqli_fetch_array($resultadoconsulta)):
-                                    ?>
-                                    <li class="list-group-item">
-                                        <input type="checkbox" name="chkMarca[]" id="chkMarca" value="<?=$row['marca'];?>">
-                                        <label for="<?=$row['marca']?>"><?=$row['marca'];?></label>
-                                    </li>
-                                    <?php
-                                endwhile;*/
-                            ?>
-                    </ul>-->
-                            
+               <form id="frmFiltroDeBusqueda" action="mostrarFiltradoProducto.php" method="get" onSubmit="return validarFiltro()">                            
                     <ul class="list-group">
                         <li class="list-group-item active" aria-current="true">Categorias</li>
                                
