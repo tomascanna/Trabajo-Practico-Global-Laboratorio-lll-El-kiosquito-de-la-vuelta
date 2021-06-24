@@ -7,16 +7,15 @@ if(empty($_SESSION['usuario'])){
     exit();
 }
 if($_GET['id']!="" || !$_GET['id']!=null){
-    BaseDeDatos::generarConsulta("DELETE from productos WHERE idproductos=".$_GET['id']."");
-    echo "<script> 
-    alert('El producto se elimino correctamente'); 
-    window.location='panel.php'; 
-    </script>";
+    $consulta=BaseDeDatos::generarConsulta("SELECT * FROM productos WHERE idproductos=".$_GET['id']."");
+    $producto=mysqli_fetch_array($consulta);
+    if($producto['imagen']!=null || $producto['imagen']!=""){
+        unlink('../'.$producto['imagen']);
+    }
+    BaseDeDatos::generarConsulta("DELETE FROM productos WHERE idproductos=".$_GET['id']."");
+    header("Location:panel.php?eliminadoCorrectamente");
 }else{
-    echo "<script> 
-    alert('El producto NO se pudo eliminar correctamente'); 
-    window.location='panel.php'; 
-    </script>";
+    header("Location:panel.php?noEliminado");
 }
 ?>
 

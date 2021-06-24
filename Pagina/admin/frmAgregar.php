@@ -25,7 +25,7 @@
                 <h3>Agregar Producto</h3>
             </div>
             <section class="frmAdministrador">   
-                <form action="agregarProducto.php" method="get" onSubmit="return validarAgregarProductos()">
+                <form action="agregarProducto.php" method="post" onSubmit="return validarAgregarProductos()" enctype="multipart/form-data">
                     <label for="txtMarca">Marca:</label><br>
                     <input type="text" name="marca" id="txtMarca"><br>
 
@@ -42,7 +42,7 @@
                     <input type="number" name="cantidad" id="txtCantidad"><br>
 
                     <label for="txtImagen">Imagen: </label><br>
-                    <input type="file" name="imagen" id="txtImagen" accept=".jpg , .png , .webp"><br><br> 
+                    <input type="file" name="imagen" id="imagen" accept=".jpg , .png , .webp"><br><br> 
 
                     <label for="">Oferta:</label>
                     <label for="rbtSI">SI</label>
@@ -76,7 +76,6 @@
             
         }else{
             return true;
-            alert("El producto se agrego correctamente");
         }
     }
 </script>

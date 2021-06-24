@@ -1,6 +1,7 @@
 <?php
     require('php/BD.php');
     require('php/ElementosPagina/producto.php');
+    require('php/carrito.php');
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -29,28 +30,12 @@
               </div>
           </section>
 
-          <section class="seccionProductos align-item-center">
-            <div class="row">
-              <div class="col-xs col-sm- col-md-3 filtroBusqueda">
-                <?php
-                  include('php/filtroDeProductos.php');
-                ?>
-              </div>
-
-              <div class="col-xs-11 col-sm-11 col-md-9 Productos">
-                <div class="row">
-                  <?php 
-                      $resultadoconsulta=BaseDeDatos::generarConsulta("SELECT Distinct* FROM kiosco.productos");
-                      while($row=mysqli_fetch_array($resultadoconsulta)){
-                          Producto::mostrar($row['nombre'],$row['precio'],$row['imagen'],$row['categoria'],$row['marca']);                                
-                      }
-                  ?>
-                </div>
-                
-              </div>
-            </div>
+          <section id="seccionProducto" class="seccionProductos align-item-center">
+          <?php
+            include('productosPaginados.php')
+          ?>
           </section>
-
+          
         </main>
         
         <footer>
@@ -61,4 +46,5 @@
     </div>
 </body>
 </html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="js/script.js"></script>

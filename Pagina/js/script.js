@@ -29,3 +29,11 @@ function validarFiltro(){
     }
   
 }
+
+function pagina(pagina){
+    $.ajax({url:"productosPaginados.php?p="+pagina, 
+    success: function(result){
+        $("#seccionProducto").html(result);
+    },error: function() {
+    console.log("No se ha podido obtener la información");
+}})};    

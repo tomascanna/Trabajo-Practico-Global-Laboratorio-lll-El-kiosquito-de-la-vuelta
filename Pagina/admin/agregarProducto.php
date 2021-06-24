@@ -6,10 +6,15 @@ if(empty($_SESSION['usuario'])){
     header("Location: index.php");
     exit();
 }
-if(!$_GET['marca']=="" || !$_GET['categoria']=="" || !$_GET['nombre']=="" || !$_GET['precio']=="" || !$_GET['cantidad']=="" || !$_GET['imagen']=="" || !$_GET['rbt']==""){
-    BaseDeDatos::generarConsulta("INSERT INTO `productos`(`idproductos`, `marca`, `categoria`, `nombre`, `precio`, `cantidad`, `imagen`, `oferta`) VALUES ('','".$_GET['marca']."','".$_GET['categoria']."','".$_GET['nombre']."','".$_GET['precio']."','".$_GET['cantidad']."','img/productos/".$_GET['imagen']."','".$_GET['rbt']."')");
-    header("Location: panel.php");
+
+if($_POST['marca']!=null || $_POST['categoria']!=null || $_POST['nombre']!=null || $_POST['precio']!=null || $_POST['cantidad']!=null || $_FILES['imagen']!=null || $_POST['rbt']!=null){
+    $imagen=$_FILES['imagen'];
+    $_img = explode('.',$imagen['name']);
+    $imagenFinal = $_POST['nombre'].'.'.$_img[1];
+    move_uploaded_file($imagen['tmp_name'],'../img/productos/'.$imagenFinal);
+    BaseDeDatos::generarConsulta("INSERT INTO `productos`(`idproductos`, `marca`, `categoria`, `nombre`, `precio`, `cantidad`, `imagen`, `oferta`) VALUES ('','".$_POST['marca']."','".$_POST['categoria']."','".$_POST['nombre']."','".$_POST['precio']."','".$_POST['cantidad']."','img/productos/".$imagenFinal."','".$_POST['rbt']."')");
+    header("Location: panel.php?productoAgregado");
 }else{
-    echo "El producto no se pudo agregar. Por favor vuelva a intentar y verifique los campos cargados del formulario.";
+    header("Location: panel.php?noAgregado");   
 }
 ?>

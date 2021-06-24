@@ -1,6 +1,8 @@
 <?php
 include('../php/BD.php');
-
+$user = "";
+$nombreCompleto ="";
+$password = "";
 $consulta = BaseDeDatos::generarConsulta("SELECT * FROM usuarios where user= '".$_POST['usuario']."'");
 
 while($row=mysqli_fetch_array($consulta)){

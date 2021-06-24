@@ -2,6 +2,7 @@
 <?php
     require('php/BD.php');
     require('php/ElementosPagina/producto.php');
+    require('php/carrito.php');
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +41,7 @@
                             $resultadoconsulta=BaseDeDatos::generarConsulta("SELECT * FROM kiosco.productos WHERE oferta=1");
 
                             while($row=mysqli_fetch_array($resultadoconsulta)){
-                                Producto::mostrar($row['nombre'],$row['precio'],$row['imagen'],$row['categoria'],$row['marca']);                                
+                                Producto::mostrar($row['idproductos'],$row['cantidad'],$row['nombre'],$row['precio'],$row['imagen'],$row['categoria'],$row['marca']);                                
                             }
                         ?>
                     </div>

@@ -1,7 +1,7 @@
 <?php
     require('php/BD.php');
     require('php/ElementosPagina/producto.php');
-
+    require('php/carrito.php');
     $busqueda = $_GET['buscadorPrincipal'];
 ?>
 
@@ -45,7 +45,7 @@
                   <?php 
                     $resultadoconsulta=BaseDeDatos::generarConsulta("SELECT * FROM productos where marca like '%".$busqueda."%' or categoria like '%".$busqueda."%' or nombre like '%".$busqueda."%'");
                     while($row=mysqli_fetch_array($resultadoconsulta)){
-                      Producto::mostrar($row['nombre'],$row['precio'],$row['imagen'],$row['categoria'],$row['marca']);                                
+                      Producto::mostrar($row['idproductos'],$row['cantidad'],$row['nombre'],$row['precio'],$row['imagen'],$row['categoria'],$row['marca']);                                
                     }
                   ?>
                 </div>

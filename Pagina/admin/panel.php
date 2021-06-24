@@ -35,6 +35,7 @@
               <div class="row">
                 <div class="col">
                   <h2>Panel de Control</h2>
+                  <?php include('alertas.php') ?>
                 </div>
               </div>
           </div>
@@ -69,7 +70,7 @@
                 <td><?=$row['nombre']?></td>
                 <td><?="$".$row['precio']?></td>
                 <td><?=$row['cantidad']?></td>
-                <td><?=$row['imagen']?></td>  
+                <td><img src="../<?=$row['imagen']?>" alt="" style="width: 100px;"></td>  
                 <td><?=($row['oferta']==1?'SI' : 'NO')?></td>
                 <td><a href="frmEditarProducto.php?id=<?=$row['idproductos']?>" class="btn btn-success">Editar</a><a href="eliminarProducto.php?id=<?=$row['idproductos']?>" class="btn btn-danger" onclick="return confirmacion('<?=$row['nombre']?>')">Eliminar</a></td>
                 </tr>

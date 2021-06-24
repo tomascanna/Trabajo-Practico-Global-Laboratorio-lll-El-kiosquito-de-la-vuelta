@@ -2,6 +2,7 @@
     
     require('php/BD.php');
     require('php/ElementosPagina/producto.php');
+    require('php/carrito.php');
 
     $resultadochkCategoria = $_GET['chkCategoria'];
     $resultadoRangoHasta = $_GET['rangoHasta'];
@@ -62,7 +63,7 @@
                           }
                           $resultadoconsulta=BaseDeDatos::generarConsulta($consulta);
                           while($row=mysqli_fetch_array($resultadoconsulta)){
-                              Producto::mostrar($row['nombre'],$row['precio'],$row['imagen'],$row['categoria'],$row['marca']);                                 
+                              Producto::mostrar($row['idproductos'],$row['cantidad'],$row['nombre'],$row['precio'],$row['imagen'],$row['categoria'],$row['marca']);                                 
                           }
                         }
                     ?>

@@ -2,7 +2,7 @@
     <div class="container">
         <div class="barraSuperior row justify-content-end">
             <div class="col-xs-1 col-lg-4">
-                <a class="lblCarrito" href="#" ><img src="icons/bag.svg">Carrito</a>
+                <a class="lblCarrito" href="mostrarCarrito.php" ><img src="icons/bag.svg">Carrito(<?= (empty($_SESSION['Carrito']))?0:count($_SESSION['Carrito']) ?>)</a>
             </div>
         </div>
         <!--Logo y buscador de la pagina-->

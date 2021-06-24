@@ -1,6 +1,18 @@
+
 <?php
+function encrypt($string, $key) {
+  $result = '';
+  for($i=0; $i<strlen($string); $i++) {
+     $char = substr($string, $i, 1);
+     $keychar = substr($key, ($i % strlen($key))-1, 1);
+     $char = chr(ord($char)+ord($keychar));
+     $result.=$char;
+  }
+  return base64_encode($result);
+}
+
 class Producto{
-  public static function mostrar($nombre,$precio,$img,$categoria,$marca){
+  public static function mostrar($id,$cantidad,$nombre,$precio,$img,$categoria,$marca){
     ?>
     <div class="producto col-xs-1 col-md-7 col-lg-4">
       <div class="card">
@@ -8,7 +20,13 @@ class Producto{
           <div class="card-body">
             <h5 class="card-title"><?= $nombre ?></h5>
             <p class="card-text">Precio: $<?= $precio ?></p>
-            <a href="#" class="btn btn-dark">Añadir al carrito</a>
+            <form action="" method="post">
+              <input type="hidden" name="id" id="id" value=<?=$id?>>
+              <input type="hidden" name="nombre" id="nombre" value="<?=$nombre?>">
+              <input type="hidden" name="precio" id="precio" value=<?= $precio ?>>
+              <input type="hidden" name="cantidad" id="cantidad" value=1>
+              <input type="submit" name="btnAccion" value="Añadir al carrito" class="btn btn-dark"> 
+            </form>
           </div>
       </div>
     </div>

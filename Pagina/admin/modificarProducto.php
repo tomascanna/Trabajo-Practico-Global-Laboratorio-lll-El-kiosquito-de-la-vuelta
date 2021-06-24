@@ -7,6 +7,19 @@ if(empty($_SESSION['usuario'])){
     exit();
 }
 
-BaseDeDatos::generarConsulta("UPDATE `productos` SET `marca`='".$_GET['marca']."',`categoria`='".$_GET['categoria']."',`nombre`='".$_GET['nombre']."',`precio`='".$_GET['precio']."',`cantidad`='".$_GET['cantidad']."',`imagen`='img/productos/".$_GET['imagen']."',`oferta`='".$_GET['rbt']."' WHERE idproductos=".$_GET['idProducto']."");
-header("Location: panel.php");
+if(isset($_FILES['imagen'])){
+    $imagen = $_FILES['imagen'];
+    $_img = explode('.',$imagen['name']);
+    $imagenFinal = $_POST['nombre'].'.'.$_img[1];
+    move_uploaded_file($imagen['tmp_name'],'../img/productos/'.$imagenFinal);
+}else{
+    $imagenFinal = ''.$_POST['imagen'];
+}
+
+if($_POST['marca']!=null || $_POST['categoria']!=null || $_POST['nombre']!=null || $_POST['precio']!=null || $_POST['cantidad']!=null || $img!=null || $_POST['rbt']!=null){
+    BaseDeDatos::generarConsulta("UPDATE `productos` SET `marca`='".$_POST['marca']."',`categoria`='".$_POST['categoria']."',`nombre`='".$_POST['nombre']."',`precio`='".$_POST['precio']."',`cantidad`='".$_POST['cantidad']."',`imagen`='".$imagenFinal."',`oferta`='".$_POST['rbt']."' WHERE idproductos=".$_POST['idProducto']."");
+    header("Location: panel.php?modificadoCorrectamente");
+}else{
+    header("Location: panel.php?nomodificado");
+}
 ?>

@@ -29,7 +29,7 @@ $id=$_GET['id'];
                 <h3>Editar Producto</h3>
             </div>
             <section class="frmAdministrador">
-                <form action="modificarProducto.php" method="get" onSubmit="return validarEditarProducto()">
+                <form action="modificarProducto.php" method="post" onSubmit="return validarEditarProducto()" enctype="multipart/form-data">
                     <?php
                     $consulta=BaseDeDatos::generarConsulta("SELECT * FROM productos where idproductos=".$id."");
                     while($row=mysqli_fetch_array($consulta)):
@@ -50,9 +50,16 @@ $id=$_GET['id'];
                     <input type="number" name="cantidad" id="txtCantidad"value=<?=$row['cantidad']?>><br>
                     
                     <label for="txtImagen">Imagen: </label><br>
-                    <input type="file" name="imagen" id="txtImagen" accept=".jpg , .png , .webp" value="<?=$row['imagen']?>"><br><br> 
-                    
-                    <?php
+                    <?php 
+                    if($row['imagen']!="" || $row['imagen']!=null){ ?>
+                        <img src="../<?=$row['imagen']?>" alt="" style="width: 200px;"><br>
+                        <input type="hidden" name="imagen" value="<?=$row['imagen']?>">
+                    <?php 
+                    }else{
+                    ?>
+                        <input type="file" name="imagen" id="txtImagen" accept=".jpg , .png , .webp" value="<?=$row['imagen']?>"><br><br> 
+                    <?php 
+                    } 
                     if(!$row['oferta']){
                     ?>
                     <label for="">Oferta:</label>
@@ -91,16 +98,13 @@ $id=$_GET['id'];
         var categoria = document.getElementById("txtCategoria");
         var precio = document.getElementById("txtPrecio");
         var cantidad = document.getElementById("txtCantidad");
-        var imagen = document.getElementById("txtImagen");
 
 
-        if(marca.value=="" || categoria.value=="" || precio.value==0 || cantidad.value==0 || imagen.value==""){
-            alert("Para agregar un producto todos los campos deben estar completos");
-            return false;
-            
+        if(marca.value=="" || categoria.value=="" || precio.value==0 || cantidad.value==0){
+            alert("Para editar un producto todos los campos deben estar completos");
+            return false; 
         }else{
             return true;
-            alert("El producto se agrego correctamente");
         }
     }
 </script>
