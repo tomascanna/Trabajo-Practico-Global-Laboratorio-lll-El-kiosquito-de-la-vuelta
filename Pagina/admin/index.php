@@ -32,6 +32,11 @@
                               <label for="txtPassword" class="form-label">Password</label>
                               <input type="password" class="form-control" name="password" id="txtPassword">
                             </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="recordarme" name="recordarme" value="recordarme">
+                                <label class="form-check-label" for="recordarme">Recordarme</label>
+                            </div>
+                            
                             <p id="errorUsuario" style="color:red;"></p>
                             <button type="submit" class="btn btn-primary">Entrar</button>
                         </form>
@@ -43,3 +48,14 @@
     </div>
 </body>
 </html>
+<script>
+<?php 
+
+    if(isset($_COOKIE['userSession']) || isset($_COOKIE['passwordSession'])){
+?>
+    document.getElementById("txtUsuario").value="<?= $_COOKIE['userSession'] ?>";
+    document.getElementById("txtPassword").value="<?= $_COOKIE['passwordSession'] ?>";
+    document.getElementById("recordarme").checked= true;
+<?php } ?>
+
+</script>

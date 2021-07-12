@@ -37,7 +37,7 @@
                         <th width="15%" class="text-center">Cantidad</th>
                         <th width="20%" class="text-center">Precio</th>
                         <th width="20%" class="text-center">Total</th>
-                        <th width="5%">--</th>
+                        <th width="5%"></th>
                     </tr>
                     <?php 
                     

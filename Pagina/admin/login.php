@@ -11,11 +11,21 @@ while($row=mysqli_fetch_array($consulta)){
     $password = $row['contraseña'];
 }
 
+if(isset($_POST['recordarme'])){
+    setcookie("userSession",$user,time() + 30*24*60*60);
+    setcookie("passwordSession",$_POST['password'],time() + 30*24*60*60);
+}else{
+    setcookie("userSession",$user,time() - 30*24*60*60);
+    setcookie("passwordSession",$_POST['password'],time() - 30*24*60*60);
+}
+
 if($_POST['usuario']==$user && md5($_POST['password'])==$password){
     session_start();
 
     $_SESSION['usuario']=$user;
     $_SESSION['nombre']=$nombreCompleto;
+
+
     header("Location: panel.php");
 }else{
     include('index.php');
@@ -31,7 +41,4 @@ if($_POST['usuario']==$user && md5($_POST['password'])==$password){
     </script>
     <?php
 }
-
-
-
 ?>

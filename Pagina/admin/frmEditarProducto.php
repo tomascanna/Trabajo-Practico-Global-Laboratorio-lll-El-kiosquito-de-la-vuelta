@@ -50,16 +50,13 @@ $id=$_GET['id'];
                     <input type="number" name="cantidad" id="txtCantidad"value=<?=$row['cantidad']?>><br>
                     
                     <label for="txtImagen">Imagen: </label><br>
+
+                    <img src="../<?=$row['imagen']?>" alt="" style="width: 200px;"><br>
+                    <input type="hidden" name="imagenBD" value="<?=$row['imagen']?>">
+                    <input id="imagenSubida" type="file" name="imagenSubida" accept=".jpg , .png , .webp"><br><br> 
+
+                        
                     <?php 
-                    if($row['imagen']!="" || $row['imagen']!=null){ ?>
-                        <img src="../<?=$row['imagen']?>" alt="" style="width: 200px;"><br>
-                        <input type="hidden" name="imagen" value="<?=$row['imagen']?>">
-                    <?php 
-                    }else{
-                    ?>
-                        <input type="file" name="imagen" id="txtImagen" accept=".jpg , .png , .webp" value="<?=$row['imagen']?>"><br><br> 
-                    <?php 
-                    } 
                     if(!$row['oferta']){
                     ?>
                     <label for="">Oferta:</label>
@@ -95,17 +92,54 @@ $id=$_GET['id'];
 <script>
     function validarEditarProducto(){
         var marca = document.getElementById("txtMarca");
+        var nombre = document.getElementById("txtNombre");
         var categoria = document.getElementById("txtCategoria");
         var precio = document.getElementById("txtPrecio");
         var cantidad = document.getElementById("txtCantidad");
+        var imagen = document.getElementById("txtImagen");
+        var validacion = true;
+        
 
-
-        if(marca.value=="" || categoria.value=="" || precio.value==0 || cantidad.value==0){
-            alert("Para editar un producto todos los campos deben estar completos");
-            return false; 
+        if(marca.value=="" || marca.value.length > 45 ){
+            marca.style.borderColor="red";
+            marca.style.backgroundColor="pink";
+            alert("Revise los datos del campo MARCA");
+            validacion = false;
         }else{
-            return true;
+            marca.style.borderColor="";
+            marca.style.backgroundColor="white";
+            validacion=true;
         }
+
+        if(nombre.value=="" || nombre.value.length > 45 ){
+            nombre.style.borderColor="red";
+            nombre.style.backgroundColor="pink";
+            alert("Revise los datos del campo Nombre");
+            validacion = false;
+        }
+        
+        if(categoria.value=="" || categoria.value.length > 45){
+            categoria.style.borderColor="red";
+            categoria.style.backgroundColor="pink";
+            alert("Revise los datos del campo CATEGORIA");
+            validacion = false;
+        }
+        
+        if(precio.value<=0 || precio.value.length > 4 ){
+            precio.style.borderColor="red";
+            precio.style.backgroundColor="pink";
+            alert("Revise los datos del campo PRECIO");
+            validacion = false;
+        }
+        
+        if(cantidad.value<=0 || cantidad.value.length > 3 ){
+            cantidad.style.borderColor="red";
+            cantidad.style.backgroundColor="pink";
+            alert("Revise los datos del campo CANTIDAD");
+            validacion = false;
+        }
+
+        return validacion;
     }
 </script>
 

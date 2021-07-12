@@ -14,6 +14,7 @@ if($_POST['marca']!=null || $_POST['categoria']!=null || $_POST['nombre']!=null 
     move_uploaded_file($imagen['tmp_name'],'../img/productos/'.$imagenFinal);
     BaseDeDatos::generarConsulta("INSERT INTO `productos`(`idproductos`, `marca`, `categoria`, `nombre`, `precio`, `cantidad`, `imagen`, `oferta`) VALUES ('','".$_POST['marca']."','".$_POST['categoria']."','".$_POST['nombre']."','".$_POST['precio']."','".$_POST['cantidad']."','img/productos/".$imagenFinal."','".$_POST['rbt']."')");
     header("Location: panel.php?productoAgregado");
+
 }else{
     header("Location: panel.php?noAgregado");   
 }
