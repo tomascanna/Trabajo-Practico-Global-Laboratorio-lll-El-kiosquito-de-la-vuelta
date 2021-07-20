@@ -121,6 +121,8 @@ main{
     width: 85%; 
     min-height:90%;
 }
+
+.seccionProductos h2{text-align: center;}
 /*-------------------FIN PAGINA PRODUCTOS || SECCION PRODUCTOS-------------------*/
 
 /*----------------------PAGINA PRODUCTOS || FILTRO BUSQUEDA---------------------*/

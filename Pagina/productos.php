@@ -2,6 +2,9 @@
     require('php/BD.php');
     require('php/ElementosPagina/producto.php');
     require('php/carrito.php');
+    $cant = 6; 
+    $pag = (isset($_GET['p']))?$_GET['p']:1;
+    $ini = ($pag-1) * $cant;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -47,4 +50,17 @@
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>/*Establecer los resultados del filtrado*/
+  var array = <?=json_encode($resultadochkCategoria);?>
+
+  for(var i=0;i<array.length;i++){
+    document.getElementById("chk"+array[i]).checked=true;
+  }
+
+  document.getElementById("rangoDesde").value=<?=$resultadoRangoDesde?>;
+  document.getElementById("lblrangoDesde").innerHTML ="Desde: $<?=$resultadoRangoDesde?>";
+
+  document.getElementById("rangoHasta").value=<?=$resultadoRangoHasta?>;
+  document.getElementById("lblrangoHasta").innerHTML ="Hasta: $<?=$resultadoRangoHasta?>";
+</script>
 <script src="js/script.js"></script>

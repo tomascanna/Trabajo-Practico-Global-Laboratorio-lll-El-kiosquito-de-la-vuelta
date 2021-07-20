@@ -29,7 +29,7 @@ $id=$_GET['id'];
                 <h3>Editar Producto</h3>
             </div>
             <section class="frmAdministrador">
-                <form action="modificarProducto.php" method="post" onSubmit="return validarEditarProducto()" enctype="multipart/form-data">
+                <form action="modificarProducto.php?modificar" method="post" onSubmit="return validarEditarProducto()" enctype="multipart/form-data">
                     <?php
                     $consulta=BaseDeDatos::generarConsulta("SELECT * FROM productos where idproductos=".$id."");
                     while($row=mysqli_fetch_array($consulta)):

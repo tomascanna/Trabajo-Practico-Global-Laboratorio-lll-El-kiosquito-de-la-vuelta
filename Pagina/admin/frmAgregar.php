@@ -25,7 +25,7 @@
                 <h3>Agregar Producto</h3>
             </div>
             <section class="frmAdministrador">   
-                <form action="agregarProducto.php" method="post" onSubmit="return validarAgregarProductos()" enctype="multipart/form-data">
+                <form action="CRUD.php?agregar" method="post" onSubmit="return validarAgregarProductos()" enctype="multipart/form-data">
                     <label for="txtMarca">Marca:</label><br>
                     <input type="text" name="marca" id="txtMarca"><br>
 

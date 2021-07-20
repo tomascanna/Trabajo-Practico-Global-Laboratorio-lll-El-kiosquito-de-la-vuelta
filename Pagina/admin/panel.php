@@ -25,7 +25,7 @@
 <body>
     <div class="administrador container">
       <header>
-        <a class="lblCerrarSesion" href="cerrarSesion.php" ><img src="../icons/cerrarSesion.svg">Cerrar Sesión</a>
+        <a class="lblCerrarSesion" href="session.php?cerrarSesion" ><img src="../icons/cerrarSesion.svg">Cerrar Sesión</a>
       </header>
 
 
@@ -72,7 +72,9 @@
                 <td><?=$row['cantidad']?></td>
                 <td><img src="../<?=$row['imagen']?>" alt="" style="width: 100px;"></td>  
                 <td><?=($row['oferta']==1?'SI' : 'NO')?></td>
-                <td><a href="frmEditarProducto.php?id=<?=$row['idproductos']?>" class="btn btn-success">Editar</a><a href="eliminarProducto.php?id=<?=$row['idproductos']?>" class="btn btn-danger" onclick="return confirmacion('<?=$row['nombre']?>')">Eliminar</a></td>
+                <td><a href="frmEditarProducto.php?id=<?=$row['idproductos']?>" class="btn btn-success">Editar</a>
+                    <a href="CRUD.php?eliminar&id=<?=$row['idproductos']?>" class="btn btn-danger" onclick="return confirmacion('<?=$row['nombre']?>')">Eliminar</a>
+                </td>
                 </tr>
                 <?php
                 endwhile;

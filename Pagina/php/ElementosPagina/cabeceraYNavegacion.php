@@ -11,7 +11,7 @@
                 <a href="index.php"><img src="img/logo/unnamed.png" alt="logo">El kiosquito de la vuelta</a>
             </div>
 
-              <form action="mostrarResultadoBusqueda.php" onsubmit="return validarBuscador()" method="get" class="buscador">
+              <form action="productos.php" onsubmit="return validarBuscador()" method="get" class="buscador">
                 <div class="row row-cols-2">
                     <div class="col"><input id="buscadorPrincipal" name="buscadorPrincipal" class="form-control me-2" type="search" placeholder="Ingrese el producto que desee buscar..." aria-label="Search"></div>
                     <div class="col"><input type="submit" value="Buscar" class="btn btn-dark"></div>

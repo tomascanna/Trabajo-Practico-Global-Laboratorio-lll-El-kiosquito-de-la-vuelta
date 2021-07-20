@@ -18,7 +18,7 @@ if(isset($_POST['btnAccion'])){
             foreach($_SESSION['Carrito'] as $indice=>$producto){
                 if($producto['id']==$id){
                     unset($_SESSION['Carrito'][$indice]);
-                    echo "<script> alert('el producto se elimino correctamente') </script>";
+                    echo "<script> alert('El producto se elimino correctamente') </script>";
                 }  
             }
         break;

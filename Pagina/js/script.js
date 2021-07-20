@@ -27,13 +27,18 @@ function validarFiltro(){
     }else{
         return true;
     }
-  
+
 }
 
 function pagina(pagina){
-    $.ajax({url:"productosPaginados.php?p="+pagina, 
+    var query= window.location.search;
+    if(query==""){
+        query = "?";
+    }
+    $.ajax({url:"productosPaginados.php"+query+"&p="+pagina, 
     success: function(result){
         $("#seccionProducto").html(result);
     },error: function() {
     console.log("No se ha podido obtener la información");
-}})};    
+}})};   
+

@@ -7,13 +7,12 @@
         </h2>
         <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
-               <form id="frmFiltroDeBusqueda" action="mostrarFiltradoProducto.php" method="get" onSubmit="return validarFiltro()">                            
+               <form id="frmFiltroDeBusqueda" action="productos.php" method="get" onSubmit="return validarFiltro()">                            
                     <ul class="list-group">
                         <li class="list-group-item active" aria-current="true">Categorias</li>
                                
                         <?php
-                            $resultadoconsulta= BaseDeDatos::generarConsulta("SELECT DISTINCT categoria FROM productos");
-                            while($row=mysqli_fetch_array($resultadoconsulta)):
+                            while($row=mysqli_fetch_array($resultadoconsultaFiltro)):
                                 ?>
                                 <li class="list-group-item">
                                     <input id="chk<?=$row['categoria'];?>" class="chkCategoria" type="checkbox" name="chkCategoria[]" value="<?=$row['categoria'];?>">

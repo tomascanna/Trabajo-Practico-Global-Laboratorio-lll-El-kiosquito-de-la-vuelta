@@ -23,7 +23,7 @@
             <section>
                 <div class="loginAdministrador row">
                     <div class="col">
-                        <form action="login.php" method="POST">
+                        <form action="session.php?login" method="POST">
                             <div class="mb-3">
                               <label for="txtUsuario" class="form-label">Usuario:</label>
                               <input class="form-control" type="text" name="usuario" id="txtUsuario">
@@ -48,14 +48,23 @@
     </div>
 </body>
 </html>
-<script>
-<?php 
 
-    if(isset($_COOKIE['userSession']) || isset($_COOKIE['passwordSession'])){
-?>
+<?php if(isset($_COOKIE['userSession']) || isset($_COOKIE['passwordSession'])){?>
+<script>
     document.getElementById("txtUsuario").value="<?= $_COOKIE['userSession'] ?>";
     document.getElementById("txtPassword").value="<?= $_COOKIE['passwordSession'] ?>";
     document.getElementById("recordarme").checked= true;
+</script>
 <?php } ?>
 
+<?php if(isset($_GET['usuarioIncorrecto'])){?>
+<script>
+        var txtUsuario = document.getElementById("txtUsuario");
+        var txtPassword =document.getElementById("txtPassword");
+        txtUsuario.style.backgroundColor = "pink"
+        txtUsuario.style.borderColor="red"
+        txtPassword.style.backgroundColor = "pink"
+        txtPassword.style.borderColor="red"
+        document.getElementById("errorUsuario").innerHTML="El usuario o contraseña ingresado es incorrecto"
 </script>
+<?php } ?>
