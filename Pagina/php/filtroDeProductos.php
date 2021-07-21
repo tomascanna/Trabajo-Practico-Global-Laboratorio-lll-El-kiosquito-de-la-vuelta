@@ -1,3 +1,15 @@
+<?php 
+    if(isset($_GET['buscadorPrincipal'])){
+        $busqueda = $_GET['buscadorPrincipal'];
+        $resultadoconsultaFiltro= BaseDeDatos::generarConsulta("SELECT  DISTINCT categoria FROM productos where marca like '%".$busqueda."%' or categoria like '%".$busqueda."%' or nombre like '%".$busqueda."%'");
+        ?> <script>document.getElementById("buscadorPrincipal").value= "<?=$busqueda?>";</script><?php 
+    }else{
+        $resultadoconsultaFiltro= BaseDeDatos::generarConsulta("SELECT DISTINCT categoria FROM productos");
+    }
+
+
+?>
+
 <div class="accordion accordion-flush" id="accordionFlushExample">
     <div class="accordion-item">
         <h2 class="accordion-header" id="flush-headingOne">

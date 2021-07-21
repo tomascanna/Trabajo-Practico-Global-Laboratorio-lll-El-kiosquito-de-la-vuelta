@@ -33,10 +33,20 @@
               </div>
           </section>
 
-          <section id="seccionProducto" class="seccionProductos align-item-center">
-          <?php
-            include('productosPaginados.php')
-          ?>
+          <section  class="seccionProductos align-item-center">
+            <div class="row">
+              <div class="col-xs col-sm- col-md-3 filtroBusqueda">
+                  <?php
+                  include('php/filtroDeProductos.php');
+                  ?>
+              </div>
+
+              <div id="seccionProducto" class="col-xs-11 col-sm-11 col-md-9 Productos">
+                <?php
+                  include('productosPaginados.php')
+                ?>
+              </div>
+            </div>
           </section>
           
         </main>
