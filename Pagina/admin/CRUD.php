@@ -10,7 +10,7 @@ if(empty($_SESSION['usuario'])){
 if(isset($_GET['agregar'])){
     if($_POST['marca']!=null || $_POST['categoria']!=null || $_POST['nombre']!=null || $_POST['precio']!=null || $_POST['cantidad']!=null || $_FILES['imagen']!=null || $_POST['rbt']!=null){
         $imagen=$_FILES['imagen'];
-        $_img = explode('.',$imagen['name']);
+        $_img = explode('.',$imagen['name']);//separo el nombre de la imagen despues del punto para obtener la extension
         $imagenFinal = $_POST['nombre'].'.'.$_img[1];
         move_uploaded_file($imagen['tmp_name'],'../img/productos/'.$imagenFinal);
         BaseDeDatos::generarConsulta("INSERT INTO `productos`(`idproductos`, `marca`, `categoria`, `nombre`, `precio`, `cantidad`, `imagen`, `oferta`) VALUES ('','".$_POST['marca']."','".$_POST['categoria']."','".$_POST['nombre']."','".$_POST['precio']."','".$_POST['cantidad']."','img/productos/".$imagenFinal."','".$_POST['rbt']."')");
@@ -33,6 +33,7 @@ if(isset($_GET['agregar'])){
     }
 }else if(isset($_GET['modificar'])){
     if($_FILES['imagenSubida']['name'] != ""){
+        unlink('../'.$_POST['imagenBD']);
         $imagen = $_FILES['imagenSubida'];
         $_img = explode('.',$imagen['name']);
         $nombre = explode(' ',$_POST['nombre']);
@@ -46,7 +47,6 @@ if(isset($_GET['agregar'])){
     if($_POST['marca']!=null || $_POST['categoria']!=null || $_POST['nombre']!=null || $_POST['precio']!=null || $_POST['cantidad']!=null || $img!=null || $_POST['rbt']!=null){
        BaseDeDatos::generarConsulta("UPDATE `productos` SET `marca`='".$_POST['marca']."',`categoria`='".$_POST['categoria']."',`nombre`='".$_POST['nombre']."',`precio`='".$_POST['precio']."',`cantidad`='".$_POST['cantidad']."',`imagen`='".$imagenFinal."',`oferta`='".$_POST['rbt']."' WHERE idproductos=".$_POST['idProducto']."");
        header("Location: panel.php?modificadoCorrectamente");
-       echo($imagenFinal);
     }else{
         header("Location: panel.php?nomodificado");
     }

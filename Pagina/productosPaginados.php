@@ -9,7 +9,6 @@
     if(isset($_GET['buscadorPrincipal'])){
         $busqueda = $_GET['buscadorPrincipal'];
         $resultadoconsulta=BaseDeDatos::generarConsulta("SELECT * FROM productos where marca like '%".$busqueda."%' or categoria like '%".$busqueda."%' or nombre like '%".$busqueda."%' order by precio asc limit $ini, $cant");
-        $resultadoconsultaFiltro= BaseDeDatos::generarConsulta("SELECT  DISTINCT categoria FROM productos where marca like '%".$busqueda."%' or categoria like '%".$busqueda."%' or nombre like '%".$busqueda."%'");
         $consultaCant=BaseDeDatos::generarConsulta("SELECT count(*) cantidad FROM productos where marca like '%".$busqueda."%' or categoria like '%".$busqueda."%' or nombre like '%".$busqueda."%'");
     }else if(isset($_GET['chkCategoria'])){
         $resultadochkCategoria = $_GET['chkCategoria'];
@@ -63,6 +62,6 @@
                   
 <ul class="pagination"><?php
     for($i= 1; $i<=ceil($paginas);$i++){ ?>
-        <li class="page-item"><a class="page-link" href="javascript:pagina(<?= $i ?>)"><?= $i?></a></li>
+        <li class="page-item <?= ($pag==$i)?'active' : '' ?>"><a class="page-link" href="javascript:pagina(<?= $i ?>)"><?= $i?></a></li>
     <?php } ?>
 </ul>      

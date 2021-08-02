@@ -1,14 +1,23 @@
+<?php
+    require('../php/BD.php');
+    session_start();
+    if(isset($_SESSION['usuario'])){
+        header("Location: panel.php");
+    }
+
+    if(isset($_COOKIE['userSession'])){
+        $id = $_COOKIE['userSession'];
+        $id = openssl_decrypt($id, "AES-128-ECB", "Kiosquito");
+        $consulta = BaseDeDatos::generarConsulta("SELECT * FROM usuarios where idUsuario= '".$id."'");
+        $usuario = mysqli_fetch_array($consulta);
+    } 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet"> 
+    <?php require('../php/ElementosPagina/meta.php');?>
     <title>EL kiosquito de la vuelta || ADMIN</title>
 </head>
 <body>
@@ -26,14 +35,14 @@
                         <form action="session.php?login" method="POST">
                             <div class="mb-3">
                               <label for="txtUsuario" class="form-label">Usuario:</label>
-                              <input class="form-control" type="text" name="usuario" id="txtUsuario">
+                              <input class="form-control" type="text" name="usuario" id="txtUsuario" value="<?= (isset($_COOKIE['userSession'])? $usuario['user'] : '' )?>">
                             </div>
                             <div class="mb-3">
                               <label for="txtPassword" class="form-label">Password</label>
-                              <input type="password" class="form-control" name="password" id="txtPassword">
+                              <input type="password" class="form-control" name="password" id="txtPassword" value="<?= (isset($_COOKIE['userSession'])? $usuario['contraseña'] : '' )?>">
                             </div>
                             <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" id="recordarme" name="recordarme" value="recordarme">
+                                <input type="checkbox" class="form-check-input" id="recordarme" name="recordarme" value="recordarme" <?= (isset($_COOKIE['userSession'])? 'checked="true"' : '' )?>">
                                 <label class="form-check-label" for="recordarme">Recordarme</label>
                             </div>
                             
@@ -49,14 +58,6 @@
 </body>
 </html>
 
-<?php if(isset($_COOKIE['userSession']) || isset($_COOKIE['passwordSession'])){?>
-<script>
-    document.getElementById("txtUsuario").value="<?= $_COOKIE['userSession'] ?>";
-    document.getElementById("txtPassword").value="<?= $_COOKIE['passwordSession'] ?>";
-    document.getElementById("recordarme").checked= true;
-</script>
-<?php } ?>
-
 <?php if(isset($_GET['usuarioIncorrecto'])){?>
 <script>
         var txtUsuario = document.getElementById("txtUsuario");
@@ -66,5 +67,6 @@
         txtPassword.style.backgroundColor = "pink"
         txtPassword.style.borderColor="red"
         document.getElementById("errorUsuario").innerHTML="El usuario o contraseña ingresado es incorrecto"
+        document.getElementById("recordarme").checked= false;
 </script>
 <?php } ?>

@@ -152,7 +152,30 @@ main{
 	border-color: transparent;
     box-shadow:none;
 }
+
+.form-range::-moz-range-thumb {
+    background-color: #000;
+}
 /*--------------------FIN PAGINA PRODUCTOS || FILTRO BUSQUEDA-------------------*/
+
+/*--------------------PAGINA PRODUCTOS || PAGINADOR -------------------*/
+.page-link {
+	position: relative;
+	display: block;
+	color: #090909;
+	text-decoration: none;
+	background-color: #fff;
+	border: 1px solid #dee2e6;
+	transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.page-item.active .page-link {
+	z-index: 3;
+	color: #fff;
+	background-color: #000;
+	border-color: #000;
+}
+/*--------------------FIN PAGINA PRODUCTOS || PAGINADOR -------------------*/
 
 /*--------------------------------QUIENES SOMOS--------------------------------*/
 .mapa{text-align: center;}
@@ -173,6 +196,11 @@ footer{margin-top: 3%;text-align: center;}
 .redesSociales a{font-size: 20px}
 .redesSociales p{font-size:30px;}
 /*--------------------------------FIN FOOTER--------------------------------*/
+
+/*----------------------------------CARRITO----------------------------------*/
+.tablaCarrito h2{text-align: center;}
+/*--------------------------------------------------------------------------*/
+
 
 /*----------------------------------ADMIN----------------------------------*/
 

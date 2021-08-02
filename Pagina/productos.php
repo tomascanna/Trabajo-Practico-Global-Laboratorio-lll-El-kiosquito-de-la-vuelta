@@ -2,9 +2,6 @@
     require('php/BD.php');
     require('php/ElementosPagina/producto.php');
     require('php/carrito.php');
-    $cant = 6; 
-    $pag = (isset($_GET['p']))?$_GET['p']:1;
-    $ini = ($pag-1) * $cant;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -37,13 +34,13 @@
             <div class="row">
               <div class="col-xs col-sm- col-md-3 filtroBusqueda">
                   <?php
-                  include('php/filtroDeProductos.php');
+                    include('php/filtroDeProductos.php');
                   ?>
               </div>
 
               <div id="seccionProducto" class="col-xs-11 col-sm-11 col-md-9 Productos">
                 <?php
-                  include('productosPaginados.php')
+                  include('productosPaginados.php');
                 ?>
               </div>
             </div>
@@ -60,8 +57,10 @@
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>/*Establecer los resultados del filtrado*/
-  var array = <?=json_encode($resultadochkCategoria);?>
+<script src="js/script.js"></script>
+<?php if(isset($_GET['chkCategoria'])){ ?>
+<script>//Establecer los resultados del filtrado
+  var array = <?=json_encode($resultadochkCategoria);?>//json_encode devuelve un string JSON codificado en caso de éxito o false en caso de error(PD: JSON es una Notacion de Objetos de JavaScript).
 
   for(var i=0;i<array.length;i++){
     document.getElementById("chk"+array[i]).checked=true;
@@ -73,4 +72,4 @@
   document.getElementById("rangoHasta").value=<?=$resultadoRangoHasta?>;
   document.getElementById("lblrangoHasta").innerHTML ="Hasta: $<?=$resultadoRangoHasta?>";
 </script>
-<script src="js/script.js"></script>
+<?php } ?>

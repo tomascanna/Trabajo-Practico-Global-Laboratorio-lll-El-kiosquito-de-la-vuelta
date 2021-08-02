@@ -1,8 +1,8 @@
-<?php 
+<?php
+    //consultas para el filtro de busqueda.
     if(isset($_GET['buscadorPrincipal'])){
         $busqueda = $_GET['buscadorPrincipal'];
         $resultadoconsultaFiltro= BaseDeDatos::generarConsulta("SELECT  DISTINCT categoria FROM productos where marca like '%".$busqueda."%' or categoria like '%".$busqueda."%' or nombre like '%".$busqueda."%'");
-        ?> <script>document.getElementById("buscadorPrincipal").value= "<?=$busqueda?>";</script><?php 
     }else{
         $resultadoconsultaFiltro= BaseDeDatos::generarConsulta("SELECT DISTINCT categoria FROM productos");
     }
@@ -28,7 +28,7 @@
                                 ?>
                                 <li class="list-group-item">
                                     <input id="chk<?=$row['categoria'];?>" class="chkCategoria" type="checkbox" name="chkCategoria[]" value="<?=$row['categoria'];?>">
-                                    <label for="<?=$row['categoria'];?>"><?=$row['categoria'];?><label>
+                                    <label for="chk<?=$row['categoria'];?>"><?=$row['categoria'];?><label>
                                 </li>
                                 <?php
                             endwhile;
@@ -38,12 +38,12 @@
                     <ul class="list-group">
                         <li class="list-group-item active" aria-current="true">Precio</li>
                         <li class="list-group-item">
-                            <label id="lblrangoDesde" for="rangoDesde">Desde</label>
+                            <label id="lblrangoDesde" for="rangoDesde">Desde:$0</label>
                             <input type="range" class="form-range" min="0" max="5600" id="rangoDesde" name="rangoDesde" oninput="cambiarValorDesde()" value="0">
                         </li>
                            
                         <li class="list-group-item">
-                            <label id="lblrangoHasta" for="rangoDesde">Hasta</label>
+                            <label id="lblrangoHasta" for="rangoDesde">Hasta:$0</label>
                             <input type="range" class="form-range" min="0" max="5600" id="rangoHasta" name="rangoHasta" oninput="cambiarValorHasta()" value="0">
                         </li>
                     </ul>

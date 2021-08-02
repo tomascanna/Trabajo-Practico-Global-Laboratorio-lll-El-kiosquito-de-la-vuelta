@@ -1,3 +1,14 @@
+function validarBuscador(){
+    var buscador = document.getElementById("buscadorPrincipal").value
+
+    if(buscador==""){
+      alert("Para poder buscar un producto debe ingresar el mismo en el buscador.")
+      return false;
+    }else{
+      return true;
+    }
+  }
+
 function cambiarValorHasta() {
     var valor = document.getElementById("rangoHasta").value;
     document.getElementById("lblrangoHasta").innerHTML = "Hasta:$" + valor;

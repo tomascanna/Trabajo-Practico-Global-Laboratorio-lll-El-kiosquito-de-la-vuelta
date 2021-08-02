@@ -1,24 +1,30 @@
-<div id="cabecera">
+  <div id="cabecera">
     <div class="container">
-        <div class="barraSuperior row justify-content-end">
-            <div class="col-xs-1 col-lg-4">
-                <a class="lblCarrito" href="mostrarCarrito.php" ><img src="icons/bag.svg">Carrito(<?= (empty($_SESSION['Carrito']))?0:count($_SESSION['Carrito']) ?>)</a>
-            </div>
+      <div class="barraSuperior row justify-content-end">
+          <div class="col-xs-1 col-lg-4">
+              <a class="lblCarrito" href="mostrarCarrito.php" ><img src="icons/bag.svg">Carrito(<?= (empty($_SESSION['Carrito']))?0:count($_SESSION['Carrito']) ?>)</a>
+          </div>
+      </div>
+      
+      <!--Logo y buscador de la pagina-->
+      <div class="logoYBuscador row row-cols-2 justify-content-center">
+        <div class="logoYNombre col">
+            <a href="index.php"><img src="img/logo/unnamed.png" alt="logo">El kiosquito de la vuelta</a>
         </div>
-        <!--Logo y buscador de la pagina-->
-        <div class="logoYBuscador row row-cols-2 justify-content-center">
-            <div class="logoYNombre col">
-                <a href="index.php"><img src="img/logo/unnamed.png" alt="logo">El kiosquito de la vuelta</a>
-            </div>
 
-              <form action="productos.php" onsubmit="return validarBuscador()" method="get" class="buscador">
-                <div class="row row-cols-2">
-                    <div class="col"><input id="buscadorPrincipal" name="buscadorPrincipal" class="form-control me-2" type="search" placeholder="Ingrese el producto que desee buscar..." aria-label="Search"></div>
-                    <div class="col"><input type="submit" value="Buscar" class="btn btn-dark"></div>
-                </div>
-              </form>
-        </div>
-        <!--FIN-Logo y buscador de la pagina-->
+        <form action="productos.php" onsubmit="return validarBuscador()" method="get" class="buscador">
+          <div class="row row-cols-2">
+            <div class="col">
+              <input id="buscadorPrincipal" name="buscadorPrincipal" class="form-control me-2" type="search" placeholder="Ingrese el producto que desee buscar..." aria-label="Search" <?= (isset($_GET['buscadorPrincipal'])? "value='$_GET[buscadorPrincipal]'" : "")?>>
+            </div>
+            
+            <div class="col">
+              <input type="submit" value="Buscar" class="btn btn-dark">
+            </div>
+          </div>
+        </form>
+      </div>
+      <!--FIN-Logo y buscador de la pagina-->
     </div>
 
     <nav class="navbar navbar-expand-lg navbar-light">
@@ -43,18 +49,4 @@
         </div>
       </div>
     </nav>
-</div>
-
-
-<script>
-  function validarBuscador(){
-    var buscador = document.getElementById("buscadorPrincipal").value
-
-    if(buscador==""){
-      alert("Para poder buscar un producto debe ingresar el mismo en el buscador.")
-      return false;
-    }else{
-      return true;
-    }
-  }
-</script>
+  </div>

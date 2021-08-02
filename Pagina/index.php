@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <?php require('php/ElementosPagina/meta.php');?> 
+    <?php include('php/ElementosPagina/meta.php');?> 
     <title>El kiosquito de la vuelta || Home</title>
 </head>
 <body>
@@ -51,10 +51,6 @@
     
         </main>
         
-        <aside>
-    
-        </aside>
-        
         <footer>
             <?php
                 include('php/ElementosPagina/footer.php');
@@ -63,7 +59,6 @@
     </div>
 </body>
 </html>
-
 <script src="js/script.js"></script>
 
 
