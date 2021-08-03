@@ -10,6 +10,7 @@
 
 ?>
 
+<!-- Los atributos data por lo general son atributos personalizados que se utilizan para aplicar alguna funcionalidad como por ejemplo js-->
 <div class="accordion accordion-flush" id="accordionFlushExample">
     <div class="accordion-item">
         <h2 class="accordion-header" id="flush-headingOne">

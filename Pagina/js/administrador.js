@@ -84,3 +84,11 @@ function validarFormulario(formulario){
     return validacion;
            
 }
+
+function pagina(pagina){
+    $.ajax({url:"tablaProductos.php?p="+pagina, 
+    success: function(result){
+        $("#tablaProductos").html(result);
+    },error: function() {
+    console.log("No se ha podido obtener la información");
+}})}; 

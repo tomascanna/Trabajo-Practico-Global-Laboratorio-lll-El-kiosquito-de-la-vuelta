@@ -4,13 +4,6 @@
     if(isset($_SESSION['usuario'])){
         header("Location: panel.php");
     }
-
-    if(isset($_COOKIE['userSession'])){
-        $id = $_COOKIE['userSession'];
-        $id = openssl_decrypt($id, "AES-128-ECB", "Kiosquito");
-        $consulta = BaseDeDatos::generarConsulta("SELECT * FROM usuarios where idUsuario= '".$id."'");
-        $usuario = mysqli_fetch_array($consulta);
-    } 
 ?>
 
 <!DOCTYPE html>
@@ -35,14 +28,14 @@
                         <form action="session.php?login" method="POST">
                             <div class="mb-3">
                               <label for="txtUsuario" class="form-label">Usuario:</label>
-                              <input class="form-control" type="text" name="usuario" id="txtUsuario" value="<?= (isset($_COOKIE['userSession'])? $usuario['user'] : '' )?>">
+                              <input class="form-control" type="text" name="usuario" id="txtUsuario">
                             </div>
                             <div class="mb-3">
                               <label for="txtPassword" class="form-label">Password</label>
-                              <input type="password" class="form-control" name="password" id="txtPassword" value="<?= (isset($_COOKIE['userSession'])? $usuario['contraseña'] : '' )?>">
+                              <input type="password" class="form-control" name="password" id="txtPassword">
                             </div>
                             <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" id="recordarme" name="recordarme" value="recordarme" <?= (isset($_COOKIE['userSession'])? 'checked="true"' : '' )?>">
+                                <input type="checkbox" class="form-check-input" id="recordarme" name="recordarme" value="recordarme">
                                 <label class="form-check-label" for="recordarme">Recordarme</label>
                             </div>
                             
@@ -69,4 +62,19 @@
         document.getElementById("errorUsuario").innerHTML="El usuario o contraseña ingresado es incorrecto"
         document.getElementById("recordarme").checked= false;
 </script>
-<?php } ?>
+<?php } 
+
+if(isset($_COOKIE['userSession'])){
+    $id = $_COOKIE['userSession'];
+    $id = openssl_decrypt($id, "AES-128-ECB", "Kiosquito");
+    $consulta = BaseDeDatos::generarConsulta("SELECT * FROM usuarios where idUsuario= '".$id."'");
+    $usuario = mysqli_fetch_array($consulta);
+    ?>
+    <script>
+        document.getElementById("txtUsuario").value="<?=$usuario['user'];?>";
+        document.getElementById("txtPassword").value="<?=$usuario['contraseña'];?>";
+        document.getElementById("recordarme").checked= true;
+    </script>
+<?php
+} 
+?>

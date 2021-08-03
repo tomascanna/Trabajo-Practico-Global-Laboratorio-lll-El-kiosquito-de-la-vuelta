@@ -36,50 +36,8 @@
         </section>
 
 
-        <section class="tablaProductos table-responsive">
-          <?php
-            $cabecera = BaseDeDatos:: generarConsulta("SHOW COLUMNS FROM productos");
-            $elemento = BaseDeDatos:: generarConsulta("SELECT * FROM productos");
-          ?>
-            <table class="table table-striped table-light table-bordered text-center table-responsive">
-              <thead>
-                <tr>
-                <?php
-                  while($row=mysqli_fetch_array($cabecera)):
-                ?>
-                  <th scope="col"><?= strtoUpper($row['Field']); ?></th>
-                <?php 
-                endwhile;
-                ?>
-                </tr>
-              </thead>
-              <tbody>
-                <?php
-                  while($row=mysqli_fetch_array($elemento)):
-                ?>
-                <tr>
-                <th scope="row"><?=$row['idproductos']?></th>
-                <td><?=$row['marca']?></td>
-                <td><?=$row['categoria']?></td>
-                <td><?=$row['nombre']?></td>
-                <td><?="$".$row['precio']?></td>
-                <td><?=$row['cantidad']?></td>
-                <td><img src="../<?=$row['imagen']?>" alt="" style="width: 100px;"></td>  
-                <td><?=($row['oferta']==1?'SI' : 'NO')?></td>
-                <td><a href="frmEditarProducto.php?id=<?=$row['idproductos']?>" class="btn btn-success">Editar</a>
-                    <a href="CRUD.php?eliminar&id=<?=$row['idproductos']?>" class="btn btn-danger" onclick="return confirmacion('<?=$row['nombre']?>')">Eliminar</a>
-                </td>
-                </tr>
-                <?php
-                endwhile;
-                ?>
-              </tbody>
-            </table>
-          
-
-          <div class="row">
-              <a class="btn btn-dark" href="frmAgregar.php" type="button">Agregar Productos</a>
-          </div>
+        <section id="tablaProductos" class="tablaProductos table-responsive">
+          <?php include('tablaProductos.php'); ?>
         </section>
       </main>
 
@@ -93,3 +51,5 @@
     return confirm("Desea eliminar el elemento "+nombre+" de la base de datos?")
   }
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="../js/administrador.js"></script>

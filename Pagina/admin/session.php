@@ -18,22 +18,12 @@ if(isset($_GET['login'])){
     $id = openssl_encrypt($id, "AES-128-ECB", "Kiosquito");
 
     if(isset($_POST['recordarme'])){
-        //Si existe la cookie la renuevo. Sino la creo y encripto la contraseña ingresada en el formulario
-        if(isset($_COOKIE["userSession"])){
-            setcookie("userSession",$id,time() + 30*24*60*60);
-        }else{
-            setcookie("userSession",$id,time() + 30*24*60*60);
-            $passwordForm = md5($passwordForm);
-        }
-        
+        setcookie("userSession",$id,time() + 30*24*60*60);
     }else{
-        if(empty($_COOKIE["userSession"])){
-            $passwordForm = md5($passwordForm);
-        };
         setcookie("userSession",$id,time() - 30*24*60*60);
     }
 
-    if($_POST['usuario']==$user && $passwordForm==$password){
+    if($_POST['usuario']==$user && ($passwordForm==$password || md5($passwordForm)==$password)){
         session_start();
         $_SESSION['usuario']=$user;
         $_SESSION['nombre']=$nombreCompleto;
