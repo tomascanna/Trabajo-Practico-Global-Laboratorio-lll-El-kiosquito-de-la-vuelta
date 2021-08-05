@@ -38,7 +38,7 @@
                 <div class="container">
                     <div class="row row-cols-1 row-cols-md-3 g-4">
                         <?php
-                            $resultadoconsulta=BaseDeDatos::generarConsulta("SELECT * FROM kiosco.productos WHERE oferta=1");
+                            $resultadoconsulta=BaseDeDatos::generarConsulta("SELECT * FROM productos WHERE oferta=1 order by precio asc");
 
                             while($row=mysqli_fetch_array($resultadoconsulta)){
                                 Producto::mostrar($row['idproductos'],$row['cantidad'],$row['nombre'],$row['precio'],$row['imagen'],$row['categoria'],$row['marca']);                                

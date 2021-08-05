@@ -22,7 +22,7 @@ function cambiarValorDesde() {
 function validarFiltro(){
   
     var checkboxes = document.getElementById("frmFiltroDeBusqueda").getElementsByClassName("chkCategoria");
-    var array = Object.values(checkboxes);
+    var array = Object.values(checkboxes);//almaceno el array de checkboxes para la validacion
     var chkActivos = 0; 
  
     for(var i=0;i<array.length;i++){

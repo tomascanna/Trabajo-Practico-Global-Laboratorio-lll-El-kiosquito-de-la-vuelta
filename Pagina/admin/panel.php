@@ -29,7 +29,7 @@
               <div class="row">
                 <div class="col">
                   <h2>Panel de Control</h2>
-                  <?php include('alertas.php') ?>
+                  <?php include('alertas.php'); ?>
                 </div>
               </div>
           </div>

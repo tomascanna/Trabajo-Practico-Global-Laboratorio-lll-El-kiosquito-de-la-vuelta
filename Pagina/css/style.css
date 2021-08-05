@@ -13,6 +13,23 @@ body{font-family: 'Antonio', sans-serif;}
 .barraSuperior a{margin:2% 3%; }
 
 .lblCarrito img,.lblCerrarSesion img{width: 20px}
+
+.page-link {
+	position: relative;
+	display: block;
+	color: #090909;
+	text-decoration: none;
+	background-color: #fff;
+	border: 1px solid #dee2e6;
+	transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.page-item.active .page-link {
+	z-index: 3;
+	color: #fff;
+	background-color: #000;
+	border-color: #000;
+}
 /*-------------------------FIN SECCION GENERALIZADA--------------------------*/
 
 /*---------------------------------CABECERA---------------------------------*/
@@ -158,24 +175,7 @@ main{
 }
 /*--------------------FIN PAGINA PRODUCTOS || FILTRO BUSQUEDA-------------------*/
 
-/*--------------------PAGINA PRODUCTOS || PAGINADOR -------------------*/
-.page-link {
-	position: relative;
-	display: block;
-	color: #090909;
-	text-decoration: none;
-	background-color: #fff;
-	border: 1px solid #dee2e6;
-	transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
 
-.page-item.active .page-link {
-	z-index: 3;
-	color: #fff;
-	background-color: #000;
-	border-color: #000;
-}
-/*--------------------FIN PAGINA PRODUCTOS || PAGINADOR -------------------*/
 
 /*--------------------------------QUIENES SOMOS--------------------------------*/
 .mapa{text-align: center;}
@@ -213,7 +213,6 @@ footer{margin-top: 3%;text-align: center;}
 
 /*-------------Panel principal---------------*/
 .administrador nav{margin: 2% 0%}
-.administrador .lblCerrarSesion{text-align: right;}
 
 .administrador .tablaProductos .row{margin:0% 16%}
 

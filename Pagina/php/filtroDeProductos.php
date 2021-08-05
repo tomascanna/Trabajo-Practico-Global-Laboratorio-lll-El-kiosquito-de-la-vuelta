@@ -2,9 +2,9 @@
     //consultas para el filtro de busqueda.
     if(isset($_GET['buscadorPrincipal'])){
         $busqueda = $_GET['buscadorPrincipal'];
-        $resultadoconsultaFiltro= BaseDeDatos::generarConsulta("SELECT  DISTINCT categoria FROM productos where marca like '%".$busqueda."%' or categoria like '%".$busqueda."%' or nombre like '%".$busqueda."%'");
+        $resultadoconsultaFiltro= BaseDeDatos::generarConsulta("SELECT  DISTINCT categoria FROM productos where marca like '%".$busqueda."%' or categoria like '%".$busqueda."%' or nombre like '%".$busqueda."%' order by categoria asc");
     }else{
-        $resultadoconsultaFiltro= BaseDeDatos::generarConsulta("SELECT DISTINCT categoria FROM productos");
+        $resultadoconsultaFiltro= BaseDeDatos::generarConsulta("SELECT DISTINCT categoria FROM productos order by categoria asc");
     }
 
 
@@ -18,6 +18,7 @@
                 Filtrá tu Búsqueda
             </button>
         </h2>
+       
         <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
                <form id="frmFiltroDeBusqueda" action="productos.php" method="get" onSubmit="return validarFiltro()">                            
@@ -40,12 +41,12 @@
                         <li class="list-group-item active" aria-current="true">Precio</li>
                         <li class="list-group-item">
                             <label id="lblrangoDesde" for="rangoDesde">Desde:$0</label>
-                            <input type="range" class="form-range" min="0" max="5600" id="rangoDesde" name="rangoDesde" oninput="cambiarValorDesde()" value="0">
+                            <input type="range" class="form-range" min="0" max="2600" id="rangoDesde" name="rangoDesde" oninput="cambiarValorDesde()" value="0">
                         </li>
                            
                         <li class="list-group-item">
                             <label id="lblrangoHasta" for="rangoDesde">Hasta:$0</label>
-                            <input type="range" class="form-range" min="0" max="5600" id="rangoHasta" name="rangoHasta" oninput="cambiarValorHasta()" value="0">
+                            <input type="range" class="form-range" min="0" max="2600" id="rangoHasta" name="rangoHasta" oninput="cambiarValorHasta()" value="0">
                         </li>
                     </ul>
                         

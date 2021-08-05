@@ -60,7 +60,8 @@
 <script src="js/script.js"></script>
 <?php if(isset($_GET['chkCategoria'])){ ?>
 <script>//Establecer los resultados del filtrado
-  var array = <?=json_encode($resultadochkCategoria);?>//json_encode devuelve un string JSON codificado en caso de éxito o false en caso de error(PD: JSON es una Notacion de Objetos de JavaScript).
+  //json_encode devuelve un string JSON codificado en caso de éxito o false en caso de error(PD: JSON es una Notacion de Objetos de JavaScript).
+  var array = <?=json_encode($resultadochkCategoria);?>
 
   for(var i=0;i<array.length;i++){
     document.getElementById("chk"+array[i]).checked=true;
